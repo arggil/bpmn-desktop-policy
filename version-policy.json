@@ -1,7 +1,7 @@
 {
   "schema": 1,
   "minVersion": "0.0.0",
-  "revokedVersions": ["0.1.0"],
-  "message": "TAMPERED - this change is not signed",
-  "issuedAt": "2026-10-15T12:00:00Z"
+  "revokedVersions": [],
+  "message": "This version of BPMN Desktop has been disabled. Please update to the latest release.",
+  "issuedAt": "2026-10-15T00:00:00Z"
 }
