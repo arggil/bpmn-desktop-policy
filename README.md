@@ -6,6 +6,11 @@ The application fetches these files at startup, verifies the signature with an
 embedded public key, and blocks itself if the running version is revoked or below
 `minVersion`.
 
+> **Default: all versions are allowed.** The committed policy uses
+> `minVersion: "0.0.0"` and an empty `revokedVersions`, so no release is blocked.
+> Blocking is **opt-in** and applied at the maintainer's discretion (e.g. a
+> broken or unsafe release).
+
 ## Files
 
 - `version-policy.json` — the policy (see schema below).
@@ -48,8 +53,13 @@ npx tauri signer sign -f ~/.tauri/bpmn-desktop-policy.key -p "" version-policy.j
 
 This (re)creates `version-policy.json.sig`. Commit and push both files.
 
-## How to disable a version
+## How to disable a version (optional, maintainer discretion)
+
+Nothing is blocked unless you explicitly change the policy.
 
 1. Add the version to `revokedVersions` (or raise `minVersion`).
 2. Update `message` and `issuedAt`.
 3. Sign (`sign.sh`), commit and push.
+
+To restore the default (allow everything), set `minVersion` back to `"0.0.0"`,
+empty `revokedVersions`, re-sign and push.
